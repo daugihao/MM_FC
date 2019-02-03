@@ -34,9 +34,9 @@ main()
 		Sleep()
 		if (IsPlayOver())
 		{
-			if (eTapToBot())
+			if (eTapToTop())
 			{
-			StartGameMenu()
+			Play("welcome_speech")
 			}
 			AckMotion()
 		}
