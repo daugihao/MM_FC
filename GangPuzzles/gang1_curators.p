@@ -21,7 +21,7 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
 new cursorColor = 0xD9150000
 new cursor = 0
 new cube[54] = [0]
-//new paint_var[]=[VAR_MAGIC1,VAR_MAGIC2,''paint_canvas'']
+new solution[54] = [cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED]
 new history[54*10] = []
 
 
@@ -39,6 +39,17 @@ draw(drawc=1)
     if (drawc) DrawPoint(cursor)
     /* blit */
     PrintCanvas()
+}
+
+PuzzleComplete()
+{
+	Play("snd1")
+	SetColor(I1)
+	DrawCube()
+	
+	for(;;)
+	{
+	}
 }
 
 
@@ -114,5 +125,10 @@ main()
         }
         AckMotion()
         draw()
+		
+		if (cube == solution)
+		{
+			PuzzleComplete()
+		}
     }
 }   
