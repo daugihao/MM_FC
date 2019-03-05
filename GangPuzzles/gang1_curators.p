@@ -21,8 +21,8 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
 new cursorColor = 0xD9150000
 new cursor = 0
 new cube[54] = [0]
-new paint_var[]=[VAR_MAGIC1,VAR_MAGIC2,''paint_canvas'']
-new history[54*10]
+//new paint_var[]=[VAR_MAGIC1,VAR_MAGIC2,''paint_canvas'']
+new history[54*10] = []
 
 
 draw(drawc=1)
@@ -41,33 +41,6 @@ draw(drawc=1)
     PrintCanvas()
 }
 
-draw_play()
-{
-    AckMotion()
-    new j
-    for (;;)
-    {
-       draw(0)
-       AdjCanvas(-100+j)
-       j+=10
-       if (j>200) j=-100
-       PrintCanvas()
-       Sleep()
-       if (IsPlayOver()) Play("snd1")
-       if (Motion())
-       {
-         if (_is(Motion(),TAP_DOUBLE)) 
-         { 
-             Quiet()
-             AckMotion()
-             break
-         }
-         AckMotion()
-      }
-   }
-}
-
-
 
 main()
 {
@@ -75,18 +48,14 @@ main()
     ICON(icon)  //this register icon bytefiled and compiler won't remove it
     /*********************************************************************/
     
-    RegisterVariable(paint_var)
     new taptype = 0, motion = 0
-    new colors[] = [0xD9150000, cGREEN, cBLUE, cRED, WHITE, 0x00000000, cORANGE, cMAGENTA, cPURPLE]
+    new colors[] = [cRED, cGREEN, cBLUE, WHITE, cORANGE, cPURPLE]
     new cci = 0
     RegAllSideTaps()
     RegMotion(TAP_DOUBLE)
     SetDoubleTapLength(400)
     SetIntensity(256)
     PushPopInit(history)
-    
-        
-    if (LoadVariable(''paint_canvas'',cube)) draw_play()  
     
     for(;;)
     {
@@ -103,15 +72,8 @@ main()
             {
             case 1: /* side - switch color */
                 {
-                    if (motion & (1 << TAP_DOUBLE))
-                    {
-                      draw_play()
-                    }
-                    else
-                    {
-                      cci = (cci + 1) % sizeof(colors)
-                      cursorColor = colors[cci]
-                    }
+                    cci = (cci + 1) % sizeof(colors)
+                    cursorColor = colors[cci]
                 }
             case 2: /* top - paint spot or side */
                 {
@@ -149,9 +111,6 @@ main()
                     }
                 }
             }
-            StoreVariable(''paint_canvas'',cube)    //variable is stored in RAM, until system needs
-                                                   //to put it into FLASH. That is the reason why
-                                                   //we can write the same variable number of times   
         }
         AckMotion()
         draw()
