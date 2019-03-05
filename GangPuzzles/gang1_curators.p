@@ -22,6 +22,7 @@ new cursorColor = 0xD9150000
 new cursor = 0
 new cube[54] = [0]
 new solution[54] = [cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED]
+new completion[54] = [I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1]
 new history[54*10] = []
 
 
@@ -44,11 +45,12 @@ draw(drawc=1)
 PuzzleComplete()
 {
 	Play("snd1")
-	SetColor(I1)
-	DrawCube()
+	ArrayToCanvas(completion)
 	
 	for(;;)
 	{
+		FlashCanvas(1,3,0)
+		Sleep(1000)
 	}
 }
 
