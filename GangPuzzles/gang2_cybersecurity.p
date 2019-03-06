@@ -19,7 +19,7 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang2_cybersecurity_intro'']   //explanation name sound (does not need to exists)
 		
 new solution = 141
-new equation[54] = [0,0,0,0,0,0,0,0,0, 0,WHITE,0,WHITE,WHITE,WHITE,0,WHITE,0, I1,I1,I1,0,I1,I1,I1,I1,I1, I1,0,0,I1,I1,I1,I1,I1,I1, I1,I1,0,0,I1,0,0,I1,I1, 0,I1,0,0,I1,0,0,I1,0]
+new equation[54] = [0,0,0,0,0,0,0,0,0, 0,WHITE,0,WHITE,WHITE,WHITE,0,WHITE,0, I1,I1,I1,0,I1,I1,I1,I1,I1, I1,0,0,I1,I1,I1,I1,I1,I1, 0,I1,I1,0,I1,0,I1,I1,0, 0,I1,0,0,I1,0,0,I1,0]
 
 
 //this function draws up to three digit number, same as score		
