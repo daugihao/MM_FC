@@ -28,7 +28,6 @@ new cursorColor = CG
 new cursor = 0
 new cube[54] = [0]
 new solution[54] = [CO,CO,CG,CB,CY,CW,CO,CR,CW, CB,CO,CB,CW,CW,CW,CY,CY,CR, CW,CR,CY,CG,CO,CY,CB,CG,CG, CY,CB,CW,CO,CR,CR,CR,CY,CG, CR,CB,CO,CB,CG,CW,CB,CG,CR, CW,CY,CG,CR,CB,CG,CY,CO,CO]
-new completion[54] = [I1,I1,I1,I1,I1,I1,I1,I1,I1, I1,I1,I1,I1,I1,I1,I1,I1,I1, I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1]
 new history[54*10] = []
 
 
@@ -51,7 +50,8 @@ draw(drawc=1)
 PuzzleComplete()
 {
 	Play("passcube_solved")
-	ArrayToCanvas(completion)
+	SetColor(I1)
+	DrawCube()
 	
 	for(;;)
 	{

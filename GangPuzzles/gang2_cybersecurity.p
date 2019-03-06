@@ -32,6 +32,23 @@ draw_score(side, number)
 	DrawDigit(9,t)
 	DrawDigit(18,o)
 }
+
+PuzzleComplete()
+{
+	Play("passcube_solved")
+	SetColor(I1)
+	DrawCube()
+	
+	for(;;)
+	{
+		if (IsPlayOver())
+		{
+			Play("snd1")
+		}
+		FlashCanvas(1,3,0)
+		Sleep(1000)
+	}
+}
 								   
 main()
 {
