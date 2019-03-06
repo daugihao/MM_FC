@@ -13,7 +13,7 @@
 //it is not mandatory, but if missing, position of script cannot be modified
 /**********************************/
 new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
-                                   0,3,       //default app placement 
+                                   0,1,       //default app placement 
                                               //Use CUBE MANAGER to move the app
                                               //across the cube and to MYCUBE SECTION
                                    /******/
@@ -97,6 +97,7 @@ main()
                 {
                     cci = (cci + 1) % sizeof(colors)
                     cursorColor = colors[cci]
+					Play("bubble")
                 }
             case 2: /* top - paint spot or side */
                 {
