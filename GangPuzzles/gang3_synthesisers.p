@@ -15,8 +15,8 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    0,0,0,   //icon
                                    I1,I1,I1,    //icon
                                    /******/
-                                   ''gang3_decoders'',  //app name sound (does not need to exists)
-                                   ''gang3_decoders_intro'']   //explanation name sound (does not need to exists)
+                                   ''gang3_synthesisers'',  //app name sound (does not need to exists)
+                                   ''gang3_synthesisers_intro'']   //explanation name sound (does not need to exists)
 
 new cursorColor = 0xD9150000
 new cursor = 0
