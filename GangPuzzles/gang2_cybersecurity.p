@@ -7,7 +7,7 @@
 //it is not mandatory, but if missing, position of script cannot be modified
 /**********************************/
 new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
-                                   0,1,       //default app placement 
+                                   0,2,       //default app placement 
                                               //Use CUBE MANAGER to move the app
                                               //across the cube and to MYCUBE SECTION
                                    /******/
@@ -93,7 +93,7 @@ main()
 			Play("drip")
 			DrawCube()
 			FlashCanvas(1,3,0)
-			Sleep(1000)
+			WaitPlayOver()
 		}
 		
 		while(GetTimer(0)!= 0)
@@ -136,6 +136,12 @@ main()
 			PrintCanvas()
 			
 			Sleep(200)
+			
+			if (GetTimer(0) < 200)
+			{
+				Play("uff")
+				WaitPlayOver()
+			}
 			
 			if (answer == solution)
 			{
