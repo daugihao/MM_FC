@@ -2,6 +2,12 @@
 
 /**********************************/
 #define I1   0x0033FF00
+#define CA   cGREEN
+#define CB   cRED
+#define CC   cBLUE
+#define CD   cORANGE
+#define CE   WHITE
+#define CF   0xFFD50000
 /**********************************/
 //next lines defines icon and allows CUBE MANAGER to move the script across CUBE MENUS 
 //it is not mandatory, but if missing, position of script cannot be modified
@@ -18,55 +24,24 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang3_synthesisers'',  //app name sound (does not need to exists)
                                    ''gang3_synthesisers_intro'']   //explanation name sound (does not need to exists)
 
-new cursorColor = 0xD9150000
-new cursor = 0
-new cube[54] = [0]
-new paint_var[]=[VAR_MAGIC1,VAR_MAGIC2,''paint_canvas'']
-new history[54*10]
+new solution[8] = [3,2,1,2,3,4,5,6]
 
-
-draw(drawc=1)
+PuzzleComplete()
 {
-    ClearCanvas()
-    /* draw painting */
-    for (new i = 0; i < 54; i++)
-    {
-        SetColor(cube[i])
-        DrawPoint(i)
-    }
-    /* draw cursor */
-    SetColor(cursorColor)
-    if (drawc) DrawPoint(cursor)
-    /* blit */
-    PrintCanvas()
+	Play("passcube_solved")
+	SetColor(I1)
+	DrawCube()
+	
+	for(;;)
+	{
+		if (IsPlayOver())
+		{
+			Play("snd1")
+		}
+		FlashCanvas(1,3,0)
+		Sleep(1000)
+	}
 }
-
-draw_play()
-{
-    AckMotion()
-    new j
-    for (;;)
-    {
-       draw(0)
-       AdjCanvas(-100+j)
-       j+=10
-       if (j>200) j=-100
-       PrintCanvas()
-       Sleep()
-       if (IsPlayOver()) Play("snd1")
-       if (Motion())
-       {
-         if (_is(Motion(),TAP_DOUBLE)) 
-         { 
-             Quiet()
-             AckMotion()
-             break
-         }
-         AckMotion()
-      }
-   }
-}
-
 
 
 main()
@@ -75,85 +50,96 @@ main()
     ICON(icon)  //this register icon bytefiled and compiler won't remove it
     /*********************************************************************/
     
-    RegisterVariable(paint_var)
-    new taptype = 0, motion = 0
-    new colors[] = [0xD9150000, cGREEN, cBLUE, cRED, WHITE, 0x00000000, cORANGE, cMAGENTA, cPURPLE]
-    new cci = 0
-    RegAllSideTaps()
-    RegMotion(TAP_DOUBLE)
-    SetDoubleTapLength(400)
-    SetIntensity(256)
-    PushPopInit(history)
-    
-        
-    if (LoadVariable(''paint_canvas'',cube)) draw_play()  
-    
-    for(;;)
-    {
-        Sleep()
-        cursor=GetCursor()
-        /* input handling */
-        motion = Motion()
-        
-        if (motion)
-        {
-            taptype = GetTapType(cursor)
-            
-            switch (taptype)
-            {
-            case 1: /* side - switch color */
-                {
-                    if (motion & (1 << TAP_DOUBLE))
-                    {
-                      draw_play()
-                    }
-                    else
-                    {
-                      cci = (cci + 1) % sizeof(colors)
-                      cursorColor = colors[cci]
-                    }
-                }
-            case 2: /* top - paint spot or side */
-                {
-                    if (motion & (1 << TAP_DOUBLE))
-                    {
-                        new ci = _i(cursor)
-                        Play("drip")
-                        for (new i = (ci / 9) * 9; i <(ci / 9 + 1) * 9; i++)
-                            cube[i] = cursorColor
-                    } 
-                    else
-                    {
-                        Push(cube)
-                        cube[_i(cursor)] = cursorColor
-                        Play("ballhit")
-                    }
-                }
-            case 3: /* bottom - clear */
-                {
-                    if (motion & (1 << TAP_DOUBLE))
-                    {
-                        Play("soko_step1")
-                        Push(cube)
-                        cellset(cube)
-                    }
-                    else
-                    {
-                      if (PPReady()>=54)
-                      {
-                       Pop(cube)
-                       Play("startapp")
-                      }
-                      else Play("uff")
-                      
-                    }
-                }
-            }
-            StoreVariable(''paint_canvas'',cube)    //variable is stored in RAM, until system needs
-                                                   //to put it into FLASH. That is the reason why
-                                                   //we can write the same variable number of times   
-        }
-        AckMotion()
-        draw()
-    }
+	RegAllSideTaps()
+	
+	new side = 0
+	new counter = 0
+	new answer[8] = [0,0,0,0,0,0,0,0]
+	new tDelay = 300
+	
+	for(;;)
+	{
+		SetColor(CE)
+		SetIntensity(5)
+		DrawCube()
+		PrintCanvas()
+		SetIntensity(255)
+		
+		if (eTapSideOK())
+		{
+			side = eTapSide()
+			answer[counter] = side+1
+			counter++
+			
+			ClearCanvas()
+			if (side == 0)
+			{
+				Play("NoteA")
+				SetColor(CA)
+				DrawSide(side)
+				FlashCanvas(1,3,0)
+				Sleep(tDelay)
+			}
+			if (side == 1)
+			{
+				Play("NoteB")
+				SetColor(CB)
+				DrawSide(side)
+				FlashCanvas(1,3,0)
+				Sleep(tDelay)
+			}
+			if (side == 2)
+			{
+				Play("NoteC")
+				SetColor(CC)
+				DrawSide(side)
+				FlashCanvas(1,3,0)
+				Sleep(tDelay)
+			}
+			if (side == 3)
+			{
+				Play("NoteD")
+				SetColor(CD)
+				DrawSide(side)
+				FlashCanvas(1,3,0)
+				Sleep(tDelay)
+			}
+			if (side == 4)
+			{
+				Play("NoteE")
+				SetColor(CE)
+				DrawSide(side)
+				FlashCanvas(1,3,0)
+				Sleep(tDelay)
+			}
+			if (side == 5)
+			{
+				Play("NoteF")
+				SetColor(CF)
+				DrawSide(side)
+				FlashCanvas(1,3,0)
+				Sleep(tDelay)
+			}
+			printf("Answer: %i,%i,%i,%i,%i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3],answer[4],answer[5],answer[6],answer[7])
+		}
+		AckMotion()
+		Sleep(tDelay)
+		
+		if (answer == solution)
+		{
+			PuzzleComplete()
+		}
+		
+		if (counter == 8)
+		{
+			Play("uff")
+			SetColor(CE)
+			FlashCanvas(1,3,0)
+			Sleep(tDelay)
+			answer = [0,0,0,0,0,0,0,0]
+			counter = 0
+			printf("Answer: %i,%i,%i,%i,%i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3],answer[4],answer[5],answer[6],answer[7])
+		}
+	}
+	
 }   
