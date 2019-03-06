@@ -9,13 +9,13 @@
 //it is not mandatory, but if missing, position of script cannot be modified
 /**********************************/
 new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
-                                   0,5,       //default app placement 
+                                   0,0,       //default app placement 
                                               //Use CUBE MANAGER to move the app
                                               //across the cube and to MYCUBE SECTION
                                    /******/
-                                   I1,I1,I1,    //icon
-                                   I1,I1,I1,   //icon
-                                   I1,I1,I1,    //icon
+                                   0,0,0,    //icon
+                                   0,WHITE,0,   //icon
+                                   0,0,0,    //icon
                                    /******/
                                    ''welcome_audio'',  //app name sound (does not need to exists)
                                    ''welcome_audio_intro'']   //explanation name sound (does not need to exists)
