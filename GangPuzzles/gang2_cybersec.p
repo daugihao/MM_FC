@@ -15,8 +15,8 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    0,I1,I1,   //icon
                                    0,I1,I1,    //icon
                                    /******/
-                                   ''gang2_cybersecurity'',  //app name sound (does not need to exists)
-                                   ''gang2_cybersecurity_intro'']   //explanation name sound (does not need to exists)
+                                   ''gang2_cybersec'',  //app name sound (does not need to exists)
+                                   ''gang2_cybersec_intro'']   //explanation name sound (does not need to exists)
 		
 new solution = 141
 new equation[54] = [0,0,0,0,0,0,0,0,0, 0,WHITE,0,WHITE,WHITE,WHITE,0,WHITE,0, I1,I1,I1,0,I1,I1,I1,I1,I1, I1,0,0,I1,I1,I1,I1,I1,I1, 0,I1,I1,0,I1,0,I1,I1,0, 0,I1,0,0,I1,0,0,I1,0]
