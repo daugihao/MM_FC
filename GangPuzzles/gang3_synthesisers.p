@@ -13,7 +13,7 @@
 //it is not mandatory, but if missing, position of script cannot be modified
 /**********************************/
 new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
-                                   0,2,       //default app placement 
+                                   0,3,       //default app placement 
                                               //Use CUBE MANAGER to move the app
                                               //across the cube and to MYCUBE SECTION
                                    /******/
@@ -74,51 +74,51 @@ main()
 			ClearCanvas()
 			if (side == 0)
 			{
-				Play("NoteA")
+				Play("_c2")
 				SetColor(CA)
 				DrawSide(side)
 				FlashCanvas(1,3,0)
-				Sleep(tDelay)
+				WaitPlayOver()
 			}
 			if (side == 1)
 			{
-				Play("NoteB")
+				Play("_d2")
 				SetColor(CB)
 				DrawSide(side)
 				FlashCanvas(1,3,0)
-				Sleep(tDelay)
+				WaitPlayOver()
 			}
 			if (side == 2)
 			{
-				Play("NoteC")
+				Play("_e2")
 				SetColor(CC)
 				DrawSide(side)
 				FlashCanvas(1,3,0)
-				Sleep(tDelay)
+				WaitPlayOver()
 			}
 			if (side == 3)
 			{
-				Play("NoteD")
+				Play("_f2")
 				SetColor(CD)
 				DrawSide(side)
 				FlashCanvas(1,3,0)
-				Sleep(tDelay)
+				WaitPlayOver()
 			}
 			if (side == 4)
 			{
-				Play("NoteE")
+				Play("_g2")
 				SetColor(CE)
 				DrawSide(side)
 				FlashCanvas(1,3,0)
-				Sleep(tDelay)
+				WaitPlayOver()
 			}
 			if (side == 5)
 			{
-				Play("NoteF")
+				Play("_h2")
 				SetColor(CF)
 				DrawSide(side)
 				FlashCanvas(1,3,0)
-				Sleep(tDelay)
+				WaitPlayOver()
 			}
 			printf("Answer: %i,%i,%i,%i,%i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3],answer[4],answer[5],answer[6],answer[7])
 		}
