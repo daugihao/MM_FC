@@ -18,8 +18,10 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang2_cybersecurity'',  //app name sound (does not need to exists)
                                    ''gang2_cybersecurity_intro'']   //explanation name sound (does not need to exists)
 		
+new solution = 101
+
 //this function draws up to three digit number, same as score		
-draw_score(side, number)
+draw_score(number)
 {
 	new i
 	new h=number/100
@@ -56,17 +58,69 @@ main()
     ICON(icon)  //this register icon bytefiled and compiler won't remove it
     /*********************************************************************/
 	
-	new i = 0
+	RegAllSideTaps()
+	
+	new side = 0
+	new answer = 0
 	
 	for(;;)
 	{
-		for(i=0;i<999;i++)
+		if (eTapToSide())
 		{
-			Sleep(1000)
+			SetTimer(0,8000)
+			answer = 0
+		}
+		ClearCanvas()
+		SetColor(WHITE)
+		DrawCube()
+		PrintCanvas()
+		AckMotion()
+		
+		while(GetTimer(0)!= 0)
+		{
+			if (eTapToSide())
+				{
+					SetTimer(0,8000)
+					side = eTapSide()
+					Play("drip")
+					if (side == 2) // units side
+					{
+						answer = answer + 1
+					}
+					if (side == 1) // tens side
+					{
+						answer = answer + 10
+					}
+					if (side == 3) // hundreds side
+					{
+						answer = answer + 100
+					}
+					if (answer > 999)
+					{
+						answer = 0
+					}
+					//printf("Side Tapped: %i\r\n", side)
+				}
 			ClearCanvas()
-			draw_score(0,i)
+			
+			SetColor(WHITE)
+			SetIntensity(5)
+			DrawSide(4)
+			DrawSide(5)
+			DrawSide(0)
+			
+			AckMotion()
+			SetColor(I1)
+			SetIntensity(255)
+			draw_score(answer)
 			PrintCanvas()
-			printf("Number printed: %i\r\n",i)
+			
+			Sleep(200)
+			
+			if (answer == solution)
+			{
+				PuzzleComplete()
+			}
 		}
 	}
 }   
