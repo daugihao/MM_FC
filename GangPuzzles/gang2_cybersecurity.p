@@ -19,11 +19,12 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang2_cybersecurity_intro'']   //explanation name sound (does not need to exists)
 		
 new solution = 141
+new equation[54] = [0,0,0,0,0,0,0,0,0, 0,WHITE,0,WHITE,WHITE,WHITE,0,WHITE,0, I1,I1,I1,0,I1,I1,I1,I1,I1, I1,0,0,I1,I1,I1,I1,I1,I1, I1,I1,0,0,I1,0,0,I1,I1, 0,I1,0,0,I1,0,0,I1,0]
+
 
 //this function draws up to three digit number, same as score		
 draw_score(number)
 {
-	new i
 	new h=number/100
 	number%=100
 	new t=number/10
@@ -33,6 +34,18 @@ draw_score(number)
 	DrawDigit(27,h)
 	DrawDigit(9,t)
 	DrawDigit(18,o)
+}
+
+draw()
+{
+    ClearCanvas()
+    /* draw painting */
+    for (new i = 0; i < 54; i++)
+    {
+        SetColor(equation[i])
+        DrawPoint(i)
+    }
+    PrintCanvas()
 }
 
 PuzzleComplete()
@@ -65,16 +78,23 @@ main()
 	
 	for(;;)
 	{
-		if (eTapToSide())
+		if (eTapSideOK())
 		{
 			SetTimer(0,8000)
 			answer = 0
 		}
 		ClearCanvas()
-		SetColor(WHITE)
-		DrawCube()
-		PrintCanvas()
+		draw()
 		AckMotion()
+		
+		if (GetTimer(0)!=0)
+		{
+			SetColor(WHITE)
+			Play("drip")
+			DrawCube()
+			FlashCanvas(1,3,0)
+			Sleep(1000)
+		}
 		
 		while(GetTimer(0)!= 0)
 		{
