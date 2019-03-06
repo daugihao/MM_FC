@@ -18,7 +18,7 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang2_cybersecurity'',  //app name sound (does not need to exists)
                                    ''gang2_cybersecurity_intro'']   //explanation name sound (does not need to exists)
 		
-new solution = 101
+new solution = 141
 
 //this function draws up to three digit number, same as score		
 draw_score(number)
