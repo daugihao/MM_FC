@@ -2,6 +2,12 @@
 
 /**********************************/
 #define I1   0x11FF0000
+#define CG   cGREEN
+#define CR   cRED
+#define CB   cBLUE
+#define CO   cORANGE
+#define CW   WHITE
+#define CY   0xFFD50000
 /**********************************/
 //next lines defines icon and allows CUBE MANAGER to move the script across CUBE MENUS 
 //it is not mandatory, but if missing, position of script cannot be modified
@@ -15,14 +21,14 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    0,I1,0,   //icon
                                    0,I1,0,    //icon
                                    /******/
-                                   ''gang4_fixers'',  //app name sound (does not need to exists)
-                                   ''gang4_fixers_intro'']   //explanation name sound (does not need to exists)
+                                   ''gang1_curators'',  //app name sound (does not need to exists)
+                                   ''gang1_curators_intro'']   //explanation name sound (does not need to exists)
 
-new cursorColor = 0xD9150000
+new cursorColor = CG
 new cursor = 0
 new cube[54] = [0]
-new solution[54] = [cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED, cRED]
-new completion[54] = [I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1]
+new solution[54] = [CO,CO,CG,CB,CY,CW,CO,CR,CW, CB,CO,CB,CW,CW,CW,CY,CY,CR, CW,CR,CY,CG,CO,CY,CB,CG,CG, CY,CB,CW,CO,CR,CR,CR,CY,CG, CR,CB,CO,CB,CG,CW,CB,CG,CR, CW,CY,CG,CR,CB,CG,CY,CO,CO]
+new completion[54] = [I1,I1,I1,I1,I1,I1,I1,I1,I1, I1,I1,I1,I1,I1,I1,I1,I1,I1, I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1,I1]
 new history[54*10] = []
 
 
@@ -44,11 +50,15 @@ draw(drawc=1)
 
 PuzzleComplete()
 {
-	Play("snd1")
+	Play("passcube_solved")
 	ArrayToCanvas(completion)
 	
 	for(;;)
 	{
+		if (IsPlayOver())
+		{
+			Play("snd1")
+		}
 		FlashCanvas(1,3,0)
 		Sleep(1000)
 	}
@@ -62,7 +72,7 @@ main()
     /*********************************************************************/
     
     new taptype = 0, motion = 0
-    new colors[] = [cRED, cGREEN, cBLUE, WHITE, cORANGE, cPURPLE]
+    new colors[] = [CG, CR, CB, CO, CW, CY]
     new cci = 0
     RegAllSideTaps()
     RegMotion(TAP_DOUBLE)
