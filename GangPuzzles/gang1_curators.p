@@ -1,7 +1,7 @@
 #include <futurocube>
 
 /**********************************/
-#define I1   0x11FF0000
+#define I1   cGREEN
 #define CG   cGREEN
 #define CR   cRED
 #define CB   cBLUE
