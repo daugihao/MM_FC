@@ -5,7 +5,7 @@
 #define CG   cGREEN
 #define CR   cRED
 #define CB   cBLUE
-#define CO   cORANGE
+#define CO   0xFF1C0000
 #define CW   WHITE
 #define CY   0xFFD50000
 /**********************************/
