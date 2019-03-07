@@ -1,7 +1,7 @@
 #include <futurocube>
 
 /**********************************/
-#define I1   0xFF00E100
+#define I1   cRED
 /**********************************/
 //next lines defines icon and allows CUBE MANAGER to move the script across CUBE MENUS 
 //it is not mandatory, but if missing, position of script cannot be modified
