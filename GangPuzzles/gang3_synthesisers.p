@@ -24,7 +24,7 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang3_synthesisers'',  //app name sound (does not need to exists)
                                    ''gang3_synthesisers_intro'']   //explanation name sound (does not need to exists)
 
-new solution[8] = [3,2,1,2,3,4,5,6]
+new solution[5] = [6,1,3,2,6]
 
 PuzzleComplete()
 {
@@ -54,7 +54,7 @@ main()
 	
 	new side = 0
 	new counter = 0
-	new answer[8] = [0,0,0,0,0,0,0,0]
+	new answer[5] = [0,0,0,0,0]
 	new tDelay = 300
 	
 	for(;;)
@@ -120,7 +120,7 @@ main()
 				FlashCanvas(1,3,0)
 				WaitPlayOver()
 			}
-			printf("Answer: %i,%i,%i,%i,%i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3],answer[4],answer[5],answer[6],answer[7])
+			printf("Answer: %i,%i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3],answer[4])
 		}
 		AckMotion()
 		Sleep(tDelay)
@@ -130,15 +130,15 @@ main()
 			PuzzleComplete()
 		}
 		
-		if (counter == 8)
+		if (counter == 5)
 		{
 			Play("uff")
 			SetColor(CE)
 			FlashCanvas(1,3,0)
 			Sleep(tDelay)
-			answer = [0,0,0,0,0,0,0,0]
+			answer = [0,0,0,0,0]
 			counter = 0
-			printf("Answer: %i,%i,%i,%i,%i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3],answer[4],answer[5],answer[6],answer[7])
+			printf("Answer: %i,%i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3],answer[4])
 		}
 	}
 	
