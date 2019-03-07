@@ -115,25 +115,6 @@ main()
                         Play("ballhit")
                     }
                 }
-            case 3: /* bottom - clear */
-                {
-                    if (motion & (1 << TAP_DOUBLE))
-                    {
-                        Play("soko_step1")
-                        Push(cube)
-                        cellset(cube)
-                    }
-                    else
-                    {
-                      if (PPReady()>=54)
-                      {
-                       Pop(cube)
-                       Play("startapp")
-                      }
-                      else Play("uff")
-                      
-                    }
-                }
             }
         }
         AckMotion()
