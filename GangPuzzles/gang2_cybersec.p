@@ -53,44 +53,45 @@ SayScore(number)
 		number%=10
 		o=number
 	}
+	//printf("%i,%i,%i\r\n",h,t,o)
 	
 	switch (h)
 	{
 		case 1:
 		{
-			Play("_s_100")
+			Play("100")
 		}
 		case 2:
 		{
-			Play("_s_200")
+			Play("200")
 		}
 		case 3:
 		{
-			Play("_s_300")
+			Play("300")
 		}
 		case 4:
 		{
-			Play("_s_400")
+			Play("400")
 		}
 		case 5:
 		{
-			Play("_s_500")
+			Play("500")
 		}
 		case 6:
 		{
-			Play("_s_600")
+			Play("600")
 		}
 		case 7:
 		{
-			Play("_s_700")
+			Play("700")
 		}
 		case 8:
 		{
-			Play("_s_800")
+			Play("800")
 		}
 		case 9:
 		{
-			Play("_s_900")
+			Play("900")
 		}
 	}
 	WaitPlayOver()
@@ -278,26 +279,24 @@ main()
 				{
 					SetTimer(0,8000)
 					side = eTapSide()
-					Play("drip")
 					if (side == 2) // units side
 					{
 						answer = answer + 1
-						SayScore(answer)
 					}
 					if (side == 1) // tens side
 					{
 						answer = answer + 10
-						SayScore(answer)
 					}
 					if (side == 3) // hundreds side
 					{
 						answer = answer + 100
-						SayScore(answer)
 					}
 					if (answer > 999)
 					{
 						answer = 0
 					}
+
+					SayScore(answer)
 					//printf("Side Tapped: %i\r\n", side)
 				}
 			ClearCanvas()
