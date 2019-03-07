@@ -1,7 +1,8 @@
 #include <futurocube>
 
 /**********************************/
-#define I1   0xFFEE0000
+#define I1   cBLUE
+#define CY   0xFFD50000
 /**********************************/
 //next lines defines icon and allows CUBE MANAGER to move the script across CUBE MENUS 
 //it is not mandatory, but if missing, position of script cannot be modified
@@ -19,7 +20,7 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang2_cybersec_intro'']   //explanation name sound (does not need to exists)
 		
 new solution = 141
-new equation[54] = [0,0,0,0,0,0,0,0,0, 0,WHITE,0,WHITE,WHITE,WHITE,0,WHITE,0, I1,I1,I1,0,I1,I1,I1,I1,I1, I1,0,0,I1,I1,I1,I1,I1,I1, 0,I1,I1,0,I1,0,I1,I1,0, 0,I1,0,0,I1,0,0,I1,0]
+new equation[54] = [0,0,0,0,0,0,0,0,0, 0,WHITE,0,WHITE,WHITE,WHITE,0,WHITE,0, CY,CY,CY,0,CY,CY,CY,CY,CY, CY,0,0,CY,CY,CY,CY,CY,CY, 0,CY,CY,0,CY,0,CY,CY,0, 0,CY,0,0,CY,0,0,CY,0]
 
 
 //this function draws up to three digit number, same as score		
@@ -130,7 +131,7 @@ main()
 			DrawSide(0)
 			
 			AckMotion()
-			SetColor(I1)
+			SetColor(CY)
 			SetIntensity(255)
 			draw_score(answer)
 			PrintCanvas()
