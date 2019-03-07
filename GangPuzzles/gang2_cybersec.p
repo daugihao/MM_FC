@@ -37,6 +37,181 @@ draw_score(number)
 	DrawDigit(18,o)
 }
 
+SayScore(number)
+{
+	new h=number/100
+	number%=100 // remainder when divided by 100
+	new t=number/10
+	new o
+	if (t <= 2)
+	{
+		number%=20
+		o=number
+	}
+	else
+	{
+		number%=10
+		o=number
+	}
+	
+	switch (h)
+	{
+		case 1:
+		{
+			Play("_s_100")
+		}
+		case 2:
+		{
+			Play("_s_200")
+		}
+		case 3:
+		{
+			Play("_s_300")
+		}
+		case 4:
+		{
+			Play("_s_400")
+		}
+		case 5:
+		{
+			Play("_s_500")
+		}
+		case 6:
+		{
+			Play("_s_600")
+		}
+		case 7:
+		{
+			Play("_s_700")
+		}
+		case 8:
+		{
+			Play("_s_800")
+		}
+		case 9:
+		{
+			Play("_s_900")
+		}
+	}
+	WaitPlayOver()
+	switch (t)
+	{
+		case 2:
+		{
+			Play("_s_20")
+		}
+		case 3:
+		{
+			Play("_s_30")
+		}
+		case 4:
+		{
+			Play("_s_40")
+		}
+		case 5:
+		{
+			Play("_s_50")
+		}
+		case 6:
+		{
+			Play("_s_60")
+		}
+		case 7:
+		{
+			Play("_s_70")
+		}
+		case 8:
+		{
+			Play("_s_80")
+		}
+		case 9:
+		{
+			Play("_s_90")
+		}
+	}
+	WaitPlayOver()
+	switch (o)
+	{
+		case 1:
+		{
+			Play("_s_1")
+		}
+		case 2:
+		{
+			Play("_s_2")
+		}
+		case 3:
+		{
+			Play("_s_3")
+		}
+		case 4:
+		{
+			Play("_s_4")
+		}
+		case 5:
+		{
+			Play("_s_5")
+		}
+		case 6:
+		{
+			Play("_s_6")
+		}
+		case 7:
+		{
+			Play("_s_7")
+		}
+		case 8:
+		{
+			Play("_s_8")
+		}
+		case 9:
+		{
+			Play("_s_9")
+		}
+		case 10:
+		{
+			Play("_s_10")
+		}
+		case 11:
+		{
+			Play("_s_11")
+		}
+		case 12:
+		{
+			Play("_s_12")
+		}
+		case 13:
+		{
+			Play("_s_13")
+		}
+		case 14:
+		{
+			Play("_s_14")
+		}
+		case 15:
+		{
+			Play("_s_15")
+		}
+		case 16:
+		{
+			Play("_s_16")
+		}
+		case 17:
+		{
+			Play("_s_17")
+		}
+		case 18:
+		{
+			Play("_s_18")
+		}
+		case 19:
+		{
+			Play("_s_19")
+		}
+	}
+	WaitPlayOver()
+}
+
 draw()
 {
     ClearCanvas()
@@ -107,14 +282,17 @@ main()
 					if (side == 2) // units side
 					{
 						answer = answer + 1
+						SayScore(answer)
 					}
 					if (side == 1) // tens side
 					{
 						answer = answer + 10
+						SayScore(answer)
 					}
 					if (side == 3) // hundreds side
 					{
 						answer = answer + 100
+						SayScore(answer)
 					}
 					if (answer > 999)
 					{
