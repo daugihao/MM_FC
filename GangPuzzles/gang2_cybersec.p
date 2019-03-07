@@ -268,8 +268,10 @@ main()
 		{
 			SetColor(WHITE)
 			Play("drip")
+			WaitPlayOver()
 			DrawCube()
 			FlashCanvas(1,3,0)
+			Play("code_entry")
 			WaitPlayOver()
 		}
 		
@@ -318,6 +320,8 @@ main()
 			if (GetTimer(0) < 200)
 			{
 				Play("uff")
+				WaitPlayOver()
+				Play("incorrect_passcode")
 				WaitPlayOver()
 			}
 			
