@@ -141,7 +141,7 @@ main()
 		Emphasis()
 		
 		//Ask first question
-		Play("question_1")
+		Play("question1")
 		printf("Asking first question!\r\n")
 		WaitPlayOver()
 		
@@ -169,7 +169,7 @@ main()
 		Emphasis()
 		
 		//Ask second question
-		Play("question_2")
+		Play("question2")
 		printf("Asking second question!\r\n")
 		WaitPlayOver()
 		
@@ -197,7 +197,7 @@ main()
 		Emphasis()
 		
 		//Ask third question
-		Play("question_3")
+		Play("question3")
 		printf("Asking third question!\r\n")
 		WaitPlayOver()
 		
@@ -225,7 +225,7 @@ main()
 		Emphasis()
 		
 		//Ask fourth question
-		Play("question_4")
+		Play("question4")
 		printf("Asking fourth question!\r\n")
 		WaitPlayOver()
 		
