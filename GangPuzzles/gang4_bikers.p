@@ -104,7 +104,8 @@ StateCompass(dir)
 			}
 		}
 	WaitPlayOver()
-	Play("positionreturn")
+	Sleep(500)
+	Play("position_return")
 	WaitPlayOver()
 }
 
