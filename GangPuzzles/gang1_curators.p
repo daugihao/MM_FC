@@ -75,8 +75,6 @@ main()
     new colors[] = [CG, CR, CB, CO, CW, CY]
     new cci = 0
     RegAllSideTaps()
-    RegMotion(TAP_DOUBLE)
-    SetDoubleTapLength(400)
     SetIntensity(256)
     PushPopInit(history)
     
@@ -101,19 +99,9 @@ main()
                 }
             case 2: /* top - paint spot or side */
                 {
-                    if (motion & (1 << TAP_DOUBLE))
-                    {
-                        new ci = _i(cursor)
-                        Play("drip")
-                        for (new i = (ci / 9) * 9; i <(ci / 9 + 1) * 9; i++)
-                            cube[i] = cursorColor
-                    } 
-                    else
-                    {
-                        Push(cube)
-                        cube[_i(cursor)] = cursorColor
-                        Play("ballhit")
-                    }
+                    Push(cube)
+                    cube[_i(cursor)] = cursorColor
+                    Play("ballhit")
                 }
             }
         }
