@@ -24,7 +24,7 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang3_synthesisers'',  //app name sound (does not need to exists)
                                    ''gang3_synthesisers_intro'']   //explanation name sound (does not need to exists)
 
-new solution[5] = [6,1,3,2,6]
+new solution[5] = [6,2,3,1,6]
 
 PuzzleComplete()
 {
