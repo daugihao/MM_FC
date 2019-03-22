@@ -277,6 +277,9 @@ main()
 			Sleep(100)
 		}
 		
+		Play("sparkies_testing")
+		WaitPlayOver()
+		Sleep(500)
 		//Checking cube against solution
 		if (cube == solution)
 		{
