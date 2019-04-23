@@ -21,8 +21,10 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang4_bikers_intro'']   //explanation name sound (does not need to exists)
 
 new solution[4] = [2,1,2,1]
-new answer[4] = [10,10,10,10]
+new NReset = 10
+new answer[4] = [NReset,NReset,NReset,NReset]
 new tDelay = 800
+new tSideCheckDelay = 10
 
 PuzzleComplete()
 {
@@ -130,7 +132,7 @@ main()
     for(;;)
     {	
 		//Reset answer
-		answer = [10,10,10,10]
+		answer = [NReset,NReset,NReset,NReset]
 		//Display rough compass image
 		DisplayCompass()
 		
@@ -143,7 +145,7 @@ main()
 		//Wait for puzzle to be oriented correctly to start
 		while(_side(GetCursor()) != 4)
 		{
-			Sleep(10)
+			Sleep(tSideCheckDelay)
 		}
 		Emphasis()
 		
@@ -153,7 +155,7 @@ main()
 		WaitPlayOver()
 	
 		//Wait for puzzle to be oriented to the answer for Q1
-		while(answer[0] == 10)
+		while(answer[0] == NReset)
 		{
 			if((_side(GetCursor()) != 4) & (_side(GetCursor()) != 5))
 			{
@@ -173,7 +175,7 @@ main()
 		//Wait for puzzle to be oriented correctly to start
 		while(_side(GetCursor()) != 4)
 		{
-			Sleep(10)
+			Sleep(tSideCheckDelay)
 		}
 		Emphasis()
 		
@@ -183,7 +185,7 @@ main()
 		WaitPlayOver()
 		
 		//Wait for puzzle to be oriented to the answer for Q2
-		while(answer[1] == 10)
+		while(answer[1] == NReset)
 		{
 			if((_side(GetCursor()) != 4) & (_side(GetCursor()) != 5))
 			{
@@ -203,7 +205,7 @@ main()
 		//Wait for puzzle to be oriented correctly to start
 		while(_side(GetCursor()) != 4)
 		{
-			Sleep(10)
+			Sleep(tSideCheckDelay)
 		}
 		Emphasis()
 		
@@ -213,7 +215,7 @@ main()
 		WaitPlayOver()
 		
 		//Wait for puzzle to be oriented to the answer for Q3
-		while(answer[2] == 10)
+		while(answer[2] == NReset)
 		{
 			if((_side(GetCursor()) != 4) & (_side(GetCursor()) != 5))
 			{
@@ -233,7 +235,7 @@ main()
 		//Wait for puzzle to be oriented correctly to start
 		while(_side(GetCursor()) != 4)
 		{
-			Sleep(10)
+			Sleep(tSideCheckDelay)
 		}
 		Emphasis()
 		
@@ -243,7 +245,7 @@ main()
 		WaitPlayOver()
 		
 		//Wait for puzzle to be oriented to the answer for Q4
-		while(answer[3] == 10)
+		while(answer[3] == NReset)
 		{
 			if((_side(GetCursor()) != 4) & (_side(GetCursor()) != 5))
 			{
