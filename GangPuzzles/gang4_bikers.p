@@ -21,7 +21,7 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang4_bikers_intro'']   //explanation name sound (does not need to exists)
 
 new solution[4] = [2,1,2,1]
-new answer[4] = [0,0,0,0]
+new answer[4] = [10,10,10,10]
 new tDelay = 800
 
 PuzzleComplete()
@@ -130,15 +130,20 @@ main()
     for(;;)
     {	
 		//Reset answer
-		answer = [0,0,0,0]
+		answer = [10,10,10,10]
 		//Display rough compass image
 		DisplayCompass()
+		
+		Sleep(500)
+		Play("rotate")
+		WaitPlayOver()
+		Sleep(500)
 		
 		//QUESTION 1!
 		//Wait for puzzle to be oriented correctly to start
 		while(_side(GetCursor()) != 4)
 		{
-			Sleep(100)
+			Sleep(10)
 		}
 		Emphasis()
 		
@@ -146,17 +151,19 @@ main()
 		Play("question1")
 		printf("Asking first question!\r\n")
 		WaitPlayOver()
-		
+	
 		//Wait for puzzle to be oriented to the answer for Q1
-		while((_side(GetCursor()) == 4) || (_side(GetCursor()) == 5))
+		while(answer[0] == 10)
 		{
-			Sleep(100)
+			if((_side(GetCursor()) != 4) & (_side(GetCursor()) != 5))
+			{
+				//Register answer
+				answer[0] = _side(GetCursor())
+				printf("Registering first answer!\r\n")
+				printf("Answer: %i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3])
+			}
 		}
 		Emphasis()
-		
-		//Register answer
-		answer[0] = _side(GetCursor())
-		printf("Registering first answer!\r\n")
 		
 		//State answer and ask to return to centre
 		StateCompass(answer[0])
@@ -166,7 +173,7 @@ main()
 		//Wait for puzzle to be oriented correctly to start
 		while(_side(GetCursor()) != 4)
 		{
-			Sleep(100)
+			Sleep(10)
 		}
 		Emphasis()
 		
@@ -176,15 +183,17 @@ main()
 		WaitPlayOver()
 		
 		//Wait for puzzle to be oriented to the answer for Q2
-		while((_side(GetCursor()) == 4) || (_side(GetCursor()) == 5))
+		while(answer[1] == 10)
 		{
-			Sleep(100)
+			if((_side(GetCursor()) != 4) & (_side(GetCursor()) != 5))
+			{
+				//Register answer
+				answer[1] = _side(GetCursor())
+				printf("Registering first answer!\r\n")
+				printf("Answer: %i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3])
+			}
 		}
 		Emphasis()
-		
-		//Register answer
-		answer[1] = _side(GetCursor())
-		printf("Registering second answer!\r\n")
 		
 		//State answer and ask to return to centre
 		StateCompass(answer[1])
@@ -194,7 +203,7 @@ main()
 		//Wait for puzzle to be oriented correctly to start
 		while(_side(GetCursor()) != 4)
 		{
-			Sleep(100)
+			Sleep(10)
 		}
 		Emphasis()
 		
@@ -204,15 +213,17 @@ main()
 		WaitPlayOver()
 		
 		//Wait for puzzle to be oriented to the answer for Q3
-		while((_side(GetCursor()) == 4) || (_side(GetCursor()) == 5))
+		while(answer[2] == 10)
 		{
-			Sleep(100)
+			if((_side(GetCursor()) != 4) & (_side(GetCursor()) != 5))
+			{
+				//Register answer
+				answer[2] = _side(GetCursor())
+				printf("Registering first answer!\r\n")
+				printf("Answer: %i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3])
+			}
 		}
 		Emphasis()
-		
-		//Register answer
-		answer[2] = _side(GetCursor())
-		printf("Registering third answer!\r\n")
 		
 		//State answer and ask to return to centre
 		StateCompass(answer[2])
@@ -222,7 +233,7 @@ main()
 		//Wait for puzzle to be oriented correctly to start
 		while(_side(GetCursor()) != 4)
 		{
-			Sleep(100)
+			Sleep(10)
 		}
 		Emphasis()
 		
@@ -232,19 +243,25 @@ main()
 		WaitPlayOver()
 		
 		//Wait for puzzle to be oriented to the answer for Q4
-		while((_side(GetCursor()) == 4) || (_side(GetCursor()) == 5))
+		while(answer[3] == 10)
 		{
-			Sleep(100)
+			if((_side(GetCursor()) != 4) & (_side(GetCursor()) != 5))
+			{
+				//Register answer
+				answer[3] = _side(GetCursor())
+				printf("Registering first answer!\r\n")
+				printf("Answer: %i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3])
+			}
 		}
 		Emphasis()
-		
-		//Register answer
-		answer[3] = _side(GetCursor())
-		printf("Registering fourth answer!\r\n")
 		
 		//State answer and ask to return to centre
 		StateCompass(answer[3])
 		
+		Sleep(500)
+		Play("checking_code")
+		WaitPlayOver()
+		Sleep(1000)
 		
 		//Check answer
 		printf("Checking full answer against solution!\r\n")
