@@ -4,6 +4,7 @@
 /**********************************/
 #define I1   0xFFD50000
 #define CY   0xFFD50000
+#define NReset 10
 /**********************************/
 //next lines defines icon and allows CUBE MANAGER to move the script across CUBE MENUS 
 //it is not mandatory, but if missing, position of script cannot be modified
@@ -21,7 +22,6 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    ''gang4_bikers_intro'']   //explanation name sound (does not need to exists)
 
 new solution[4] = [2,1,2,1]
-new NReset = 10
 new answer[4] = [NReset,NReset,NReset,NReset]
 new tDelay = 800
 new tSideCheckDelay = 10
