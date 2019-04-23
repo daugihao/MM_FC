@@ -127,25 +127,31 @@ main()
 		AckMotion()
 		Sleep(tDelay)
 		
-		if (answer == solution)
-		{
-			PuzzleComplete()
-		}
 		
 		if (counter == 5)
 		{
-			Play("uff")
+			Sleep(500)
+			Play("checking_code")
 			WaitPlayOver()
-			Play("incorrect_passcode")
-			WaitPlayOver()
-			AckMotion()
-			SetColor(CE)
-			FlashCanvas(1,3,0)
-			Sleep(tDelay)
-			answer = [0,0,0,0,0]
-			counter = 0
-			printf("Answer: %i,%i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3],answer[4])
+			Sleep(1000)
+			if (answer == solution)
+			{
+				PuzzleComplete()
+			}
+			else
+			{
+				Play("uff")
+				WaitPlayOver()
+				Play("incorrect_passcode")
+				WaitPlayOver()
+				AckMotion()
+				SetColor(CE)
+				FlashCanvas(1,3,0)
+				Sleep(tDelay)
+				answer = [0,0,0,0,0]
+				counter = 0
+				printf("Answer: %i,%i,%i,%i,%i\r\n",answer[0],answer[1],answer[2],answer[3],answer[4])
+			}
 		}
 	}
-	
-}   
+}	
