@@ -1,4 +1,5 @@
 #include <futurocube>
+#include <constants>
 
 /**********************************/
 #define I1   0xFFE50000 //Yellow
@@ -23,6 +24,7 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
 main() 
 {
 	ICON(icon)  //this register icon bytefiled and compiler won't remove it
+	SetVolume(VOLUME)
 	
 	RegAllTaps()
 	

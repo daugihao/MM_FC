@@ -1,4 +1,5 @@
 #include <futurocube>
+#include <constants>
 
 /**********************************/
 #define I1   cGREEN
@@ -69,6 +70,7 @@ main()
 {
     /*********************************************************************/
     ICON(icon)  //this register icon bytefiled and compiler won't remove it
+	SetVolume(VOLUME)
     /*********************************************************************/
     
     new taptype = 0, motion = 0

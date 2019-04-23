@@ -1,4 +1,5 @@
 #include <futurocube>
+#include <constants>
 
 /**********************************/
 #define I1   cBLUE
@@ -246,6 +247,7 @@ main()
 {
 	/*********************************************************************/
     ICON(icon)  //this register icon bytefiled and compiler won't remove it
+	SetVolume(VOLUME)
     /*********************************************************************/
 	
 	RegAllSideTaps()

@@ -1,4 +1,5 @@
 #include <futurocube>
+#include <constants>
 
 new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
                                    0,0,       //default app placement 
@@ -15,6 +16,7 @@ new icon[]=[ICON_MAGIC1,ICON_MAGIC2,          //MANDATORY START
 main() 
 {
 	ICON(icon)  //this register icon bytefiled and compiler won't remove it
+	SetVolume(VOLUME)
 	
 	StartGameMenu()
 }

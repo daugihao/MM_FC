@@ -1,4 +1,5 @@
 #include <futurocube>
+#include <constants>
 
 /**********************************/
 #define I1   0xFFD50000
@@ -121,6 +122,7 @@ main()
 {
     /*********************************************************************/
     ICON(icon)  //this register icon bytefiled and compiler won't remove it
+	SetVolume(VOLUME)
     /*********************************************************************/
 	
     SetIntensity(256)
