@@ -271,6 +271,8 @@ main()
 		}
 		else
 		{
+			Play("uff")
+			WaitPlayOver()
 			Play("incorrect_passcode")
 			WaitPlayOver()
 		}
